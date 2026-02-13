@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Final Valentine Mission 💘</title>
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+<audio autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+
+    <img src="yourphoto.jpg" class="profile">
+
+    <h1 id="typing"></h1>
+
+    <div id="questionBox">
+        <button id="yesBtn" disabled>Yes 💖</button>
+        <button id="noBtn">No 😢</button>
+    </div>
+
+    <div id="game" class="hidden">
+        <p>Click the hearts to prove your love 💕</p>
+        <div id="heartsArea"></div>
+        <div class="meter">
+            <div id="loveMeter"></div>
+        </div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
