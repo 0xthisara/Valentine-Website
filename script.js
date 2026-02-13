@@ -71,9 +71,33 @@ function startGame() {
 
 function winGame() {
     typingText.innerHTML = "YOU WIN MY HEART FOREVER 😭💘";
-    confetti({
-        particleCount: 300,
-        spread: 150,
-        origin: { y: 0.6 }
-    });
+
+    const flowerColors = [
+        "#ff69b4",  // pink
+        "#ff1493",  // deep pink
+        "#ffb6c1",  // light pink
+        "#ff85a2",  // rose
+        "#ffd1dc",  // soft pink
+        "#ffffff"   // white
+    ];
+
+    // Multiple flower bursts
+    for (let i = 0; i < 5; i++) {
+        setTimeout(() => {
+            confetti({
+                particleCount: 80,
+                spread: 120,
+                startVelocity: 30,
+                gravity: 0.8,
+                scalar: 1.2,
+                shapes: ["circle"],
+                colors: flowerColors,
+                origin: {
+                    x: Math.random(),
+                    y: Math.random() * 0.6
+                }
+            });
+        }, i * 300);
+    }
 }
+
