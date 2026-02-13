@@ -76,37 +76,47 @@ function startGame() {
     }
 }
 
-function winGame() {
-    typingText.innerHTML = "YOU WIN MY HEART FOREVER 😭💘";
+for (let i = 0; i < 30; i++) {
+    console.log(i);
+}
 
-    const flowerColors = [
-        "#ff69b4",  // pink
-        "#ff1493",  // deep pink
-        "#ffb6c1",  // light pink
-        "#ff85a2",  // rose
-        "#ffd1dc",  // soft pink
-        "#ffffff"   // white
+
+function winGame() {
+    typingText.innerHTML = "YOU WIN MY HEART FOREVER 💙";
+
+    const duration = 4 * 1000;
+    const animationEnd = Date.now() + duration;
+
+    const blueColors = [
+        "#00c6ff",
+        "#0072ff",
+        "#4facfe",
+        "#00f2fe",
+        "#1e90ff",
+        "#87cefa"
     ];
 
-    // Multiple flower bursts
-    for (let i = 0; i < 5; i++) {
-        setTimeout(() => {
-            confetti({
-                particleCount: 80,
-                spread: 120,
-                startVelocity: 30,
-                gravity: 0.8,
-                scalar: 1.2,
-                shapes: ["circle"],
-                colors: flowerColors,
-                origin: {
-                    x: Math.random(),
-                    y: Math.random() * 0.6
-                }
-            });
-        }, i * 300);
-    }
+    (function frame() {
+        confetti({
+            particleCount: 60,
+            startVelocity: 45,
+            spread: 360,
+            ticks: 100,
+            gravity: 0.8,
+            origin: {
+                x: Math.random(),
+                y: Math.random() - 0.2
+            },
+            colors: blueColors,
+            shapes: ["circle"]
+        });
+
+        if (Date.now() < animationEnd) {
+            requestAnimationFrame(frame);
+        }
+    })();
 }
+
 
 yesBtn.addEventListener("click", () => {
     bgMusic.play();
