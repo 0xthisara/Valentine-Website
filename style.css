@@ -74,3 +74,16 @@ button {
     border-radius: 20px;
     transition: 0.3s;
 }
+
+body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle at center bottom, #0a1a2f 0%, #000814 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+    color: white;
+}
+
