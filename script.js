@@ -4,6 +4,13 @@ const noBtn = document.getElementById("noBtn");
 const game = document.getElementById("game");
 const heartsArea = document.getElementById("heartsArea");
 const loveMeter = document.getElementById("loveMeter");
+const bgMusic = document.getElementById("bgMusic");
+
+document.body.addEventListener("click", function () {
+    if (bgMusic.paused) {
+        bgMusic.play();
+    }
+});
 
 const questions = [
     "Do you like me? 😏",
@@ -100,4 +107,9 @@ function winGame() {
         }, i * 300);
     }
 }
+
+yesBtn.addEventListener("click", () => {
+    bgMusic.play();
+});
+
 
