@@ -1,5 +1,4 @@
-window.onload = () => {
-    // Elements
+document.addEventListener("DOMContentLoaded", () => {
     const typingText = document.getElementById("typing");
     const yesBtn = document.getElementById("yesBtn");
     const noBtn = document.getElementById("noBtn");
@@ -8,13 +7,6 @@ window.onload = () => {
     const loveMeter = document.getElementById("loveMeter");
     const bgMusic = document.getElementById("bgMusic");
 
-    // Check elements
-    if (!typingText || !yesBtn || !noBtn) {
-        console.error("One or more HTML elements are missing!");
-        return;
-    }
-
-    // Questions
     const questions = [
         "Do you like me? 💙",
         "Do I make you smile? 😊",
@@ -25,17 +17,15 @@ window.onload = () => {
     let questionIndex = 0;
     let love = 0;
 
-    // Start music after first click anywhere
+    // Music starts on first click
     document.body.addEventListener("click", function () {
         if (bgMusic && bgMusic.paused) {
             bgMusic.play().catch(() => {});
         }
-    }, { once: true }); // only run once
+    }, { once: true });
 
     // Typing effect
     function typeWriter(text, i = 0) {
-        if (!typingText) return;
-
         if (i < text.length) {
             typingText.innerHTML += text.charAt(i);
             setTimeout(() => typeWriter(text, i + 1), 40);
@@ -43,18 +33,17 @@ window.onload = () => {
     }
 
     function loadQuestion() {
-        if (!typingText || questionIndex >= questions.length) return;
-
-        typingText.innerHTML = "";
-        typeWriter(questions[questionIndex]);
+        if (questionIndex < questions.length) {
+            typingText.innerHTML = "";
+            typeWriter(questions[questionIndex]);
+        }
     }
 
     loadQuestion();
 
-    // NO button logic
+    // NO button
     noBtn.addEventListener("click", () => {
         questionIndex++;
-
         if (questionIndex < questions.length) {
             loadQuestion();
         } else {
@@ -63,7 +52,7 @@ window.onload = () => {
         }
     });
 
-    // YES button logic
+    // YES button
     yesBtn.addEventListener("click", () => {
         document.getElementById("questionBox").classList.add("hidden");
         game.classList.remove("hidden");
@@ -73,22 +62,18 @@ window.onload = () => {
     // Mini love game
     function startGame() {
         heartsArea.innerHTML = "";
-
         for (let i = 0; i < 15; i++) {
             const heart = document.createElement("span");
             heart.innerHTML = "💙";
             heart.classList.add("heart");
-
             heart.addEventListener("click", () => {
                 love += 7;
                 loveMeter.style.width = love + "%";
                 heart.remove();
-
                 if (love >= 100) {
                     winGame();
                 }
             });
-
             heartsArea.appendChild(heart);
         }
     }
@@ -96,18 +81,9 @@ window.onload = () => {
     // Blue fireworks finale
     function winGame() {
         typingText.innerHTML = "YOU WIN MY HEART FOREVER 💙";
-
         const duration = 4000;
         const end = Date.now() + duration;
-
-        const blueColors = [
-            "#00c6ff",
-            "#0072ff",
-            "#4facfe",
-            "#00f2fe",
-            "#1e90ff",
-            "#87cefa"
-        ];
+        const blueColors = ["#00c6ff","#0072ff","#4facfe","#00f2fe","#1e90ff","#87cefa"];
 
         (function frame() {
             confetti({
@@ -115,17 +91,13 @@ window.onload = () => {
                 spread: 360,
                 startVelocity: 45,
                 gravity: 0.8,
-                origin: {
-                    x: Math.random(),
-                    y: Math.random() - 0.2
-                },
+                origin: { x: Math.random(), y: Math.random() - 0.2 },
                 colors: blueColors,
                 shapes: ["circle"]
             });
-
             if (Date.now() < end) {
                 requestAnimationFrame(frame);
             }
         })();
     }
-};
+});
