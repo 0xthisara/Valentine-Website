@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "Do you like me? 😏",
         "Do I make you smile? 😊",
         "Are you sure you don't want me? 👀",
-        "Will you finally be my Valentine? 💘"
+        "Will you be my Valentine? 💘"
     ];
 
     let questionIndex = 0;
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
             loadQuestion();
         } else {
             yesBtn.disabled = false;
-            typingText.innerHTML = "You tried... but YES is your destiny 😌💙";
+            typingText.innerHTML = "You tried... but YES is your destiny your gonna be my valentine forever 😌💙";
         }
     });
 
