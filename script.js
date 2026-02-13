@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const bgMusic = document.getElementById("bgMusic");
 
     const questions = [
-        "Do you like me? 💙",
+        "Do you like me? 😏",
         "Do I make you smile? 😊",
         "Are you sure you don't want me? 👀",
         "Will you finally be my Valentine? 💘"
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
             loadQuestion();
         } else {
             yesBtn.disabled = false;
-            typingText.innerHTML = "Okay okay… YES is your destiny 💙";
+            typingText.innerHTML = "You tried... but YES is your destiny 😌💙";
         }
     });
 
